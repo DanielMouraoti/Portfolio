@@ -116,7 +116,7 @@ footer{margin-top:5rem;padding:1.5rem 0 3rem;border-top:1px solid var(--line);co
         <h1 data-i="h1">Oi, sou o Daniel. Cuido de infraestrutura, monitoramento e automação</h1>
         <p class="lede" data-i="lede">Atuo na sustentação de servidores Linux de aplicações financeiras, com Zabbix, Grafana e Ansible. Fora do trabalho, pratico IaC e SRE em projetos no GitHub. Aqui ficam esses projetos e, mais pra frente, o que eu for aprendendo no caminho.</p>
         <div class="links">
-          <a href="Daniel_Mourao-curriculo.pdf" data-i="cv">baixar currículo (pdf)</a>
+          <a href="Daniel_Mourao-curriculo.pdf" id="cv" data-cv-pt="Daniel_Mourao-curriculo.pdf" data-cv-en="Daniel_Mourao-resume.pdf" data-i="cv">baixar currículo (pdf)</a>
           <a href="https://www.linkedin.com/in/danielmouraoda/">linkedin →</a>
           <a href="https://github.com/DanielMouraoti">github →</a>
         </div>
@@ -189,7 +189,7 @@ var d=document.documentElement,
 EN={n1:'projects',n3:'contact',m1:'infrastructure analyst',m2:'in IT since 2024',m3:'são paulo, brazil',
 h1:'Hi, I\u2019m Daniel. I take care of infrastructure, monitoring and automation',
 lede:'I support Linux servers for financial applications, using Zabbix, Grafana and Ansible. Outside of work, I practice IaC and SRE in GitHub projects. This is where those projects live and, further down the road, what I learn along the way.',
-cv:'download resume (pdf, in portuguese)',ps1:'ls ~/projects',h2a:'Projects',
+cv:'download resume (pdf)',ps1:'ls ~/projects',h2a:'Projects',
 t1:'Core API: microservices on Kubernetes on GCP',
 p1:'Python API with a Redis cache, a RabbitMQ queue and a dedicated worker, evolved from Docker Compose to Kubernetes. The VPC and the GKE Autopilot cluster are created with Terraform, and the GitHub Actions pipeline publishes the image to Docker Hub with a per-commit tag.',
 t2:'SRE and observability lab',
@@ -209,7 +209,8 @@ els.forEach(function(e){e.dataset.pt=e.innerHTML});
 function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function lang(l){d.dataset.lang=l;d.lang=l==='en'?'en':'pt-BR';document.title=T[l];
 els.forEach(function(e){e.innerHTML=l==='en'?EN[e.dataset.i]:e.dataset.pt});
-document.getElementById('lang').textContent=l==='en'?'pt':'en'}
+document.getElementById('lang').textContent=l==='en'?'pt':'en';
+var cv=document.getElementById('cv');cv.href=cv.dataset[l==='en'?'cvEn':'cvPt']}
 lang(d.dataset.lang==='en'?'en':'pt');
 document.getElementById('lang').onclick=function(){var l=d.dataset.lang==='en'?'pt':'en';lang(l);save('lang',l)};
 document.getElementById('theme').onclick=function(){var t=d.dataset.theme==='light'?'dark':'light';d.dataset.theme=t;save('theme',t)};
